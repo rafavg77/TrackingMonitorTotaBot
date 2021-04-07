@@ -49,7 +49,8 @@ class TrackApi:
             time.sleep(2)
             name_file = time.strftime("%Y%m%d-%H%M%S") + ".png"
             logging.info("name_file:" + name_file)
-            img_url=ob.full_Screenshot(driver, save_path=DOWNLOAD_PATH, image_name=name_file)
+            #img_url=ob.full_Screenshot(driver, save_path=DOWNLOAD_PATH, image_name=name_file)
+            driver.save_screenshot(DOWNLOAD_PATH+name_file)
             driver.quit() 
         except ValueError as err:
             logging.error("Error in accessTraking")
