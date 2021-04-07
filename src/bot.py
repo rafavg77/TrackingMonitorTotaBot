@@ -61,7 +61,7 @@ def reply(update, context):
     chat_id=update.message.chat_id
     if isPermited(update, context):
         if user_input == "Tracking Status":
-            update.message.reply_text("Requesting last Status, wait a moment... ")
+            #update.message.reply_text("Requesting last Status, wait a moment... ")
             getTrackingStatus(update, context,chat_id)
         elif user_input == "Ping":
             ping(update, context)
