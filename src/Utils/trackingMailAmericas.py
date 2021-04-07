@@ -55,8 +55,3 @@ class TrackApi:
             logging.error(err)
             driver.quit()
         return name_file
-
-    #def getTrackingStatus(self):
-    #    file = accessTraking(driver)
-    #    driver.quit()
-    #    return file

@@ -1,0 +1,15 @@
+[Unit]
+Description=Telegram Bot to Tracking 
+
+Wants=network.target
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/pi/Production/Bots/TrackingMonitorTotaBot/src/bot.py
+Restart=on-failure
+RestartSec=10
+SyslogIdentifier=bot-trackingMonitor
+User=pi
+
+[Install]
+WantedBy=multi-user.target
