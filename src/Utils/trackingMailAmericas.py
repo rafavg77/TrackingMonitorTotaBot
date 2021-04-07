@@ -23,6 +23,7 @@ BOT_URL = config.get('telegram_bot','telegram_url')
 TRACKING_URL = config.get('mail_americas','mail_americas_url')
 DRIVER_PATH = config.get('base','driver_path')
 DOWNLOAD_PATH = config.get('base','base_dowload')
+CONFIG_HEADLESS = config.get('base','config_headless')
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -33,7 +34,7 @@ class TrackApi:
         try:
             logging.info("Running Tracking Script ... ")
             options = Options()
-            options.headless = False
+            options.headless = CONFIG_HEADLESS
             options.add_argument("--window-size=1920,1200")
             profile = {"plugins.plugins_list": [{"enabled": False, "name": "Chrome PDF Viewer"}], # Disable Chrome's PDF Viewer
                 "download.default_directory": DOWNLOAD_PATH , "download.extensions_to_open": "applications/pdf"}
