@@ -72,8 +72,8 @@ def getTrackingStatus(update, context,chat_id):
         lastStatus = status.accessTraking()
         logging.info("Sending: " + DOWNLOAD_PATH+lastStatus)
         print(open(DOWNLOAD_PATH+lastStatus,'rb'))
-        #context.bot.send_photo(chat_id=chat_id,photo=open(DOWNLOAD_PATH+lastStatus,'rb'))
-        send = sendPhoto(lastStatus,chat_id)
+        context.bot.send_photo(chat_id=chat_id,photo=open(DOWNLOAD_PATH+lastStatus,'rb'))
+        #send = sendPhoto(lastStatus,chat_id)
     except ValueError as err:
         logging.error(err)
 
@@ -86,7 +86,6 @@ if __name__ == '__main__':
     dispatcher.add_handler(CommandHandler('help', help))
     dispatcher.add_handler(CommandHandler('ping', ping))
     dispatcher.add_handler(MessageHandler(Filters.regex('^(Ping|Tracking Status)$'), reply))
-    #dispatcher.add_error_handler(error_handler)
-
+    
     updater.start_polling()
     updater.idle()
