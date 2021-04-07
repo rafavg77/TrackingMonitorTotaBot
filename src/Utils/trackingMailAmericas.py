@@ -42,7 +42,7 @@ class TrackApi:
             driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
             driver.get(TRACKING_URL)
             logging.info("Opening " + TRACKING_URL)
-
+            time.sleep(5)
             element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="modal-aliexpress"]')))
             closeModal = driver.find_element_by_xpath('//*[@id="modal-aliexpress"]/div/div/div[1]/button')
             closeModal.click()

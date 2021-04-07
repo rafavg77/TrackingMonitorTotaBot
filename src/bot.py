@@ -67,13 +67,15 @@ def reply(update, context):
             ping(update, context)
 
 def getTrackingStatus(update, context,chat_id):
-    status = TrackApi()
-    lastStatus = status.accessTraking()
-    logging.info("Sending: " + DOWNLOAD_PATH+lastStatus)
-    print(open(DOWNLOAD_PATH+lastStatus,'rb'))
-    #context.bot.send_photo(chat_id=chat_id,photo=open(DOWNLOAD_PATH+lastStatus,'rb'))
-    send = sendPhoto(lastStatus,chat_id)
-
+    try:
+        status = TrackApi()
+        lastStatus = status.accessTraking()
+        logging.info("Sending: " + DOWNLOAD_PATH+lastStatus)
+        print(open(DOWNLOAD_PATH+lastStatus,'rb'))
+        #context.bot.send_photo(chat_id=chat_id,photo=open(DOWNLOAD_PATH+lastStatus,'rb'))
+        send = sendPhoto(lastStatus,chat_id)
+    except ValueError as err:
+        logging.error(err)
 
 def error_handler(update: object, context: CallbackContext) -> None:
     """Log the error and send a telegram message to notify the developer."""
