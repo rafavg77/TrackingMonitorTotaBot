@@ -48,7 +48,6 @@ def help(update, context):
         choice = update.message.reply_text(
             "Choose a Command to execute:",
             reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True, resize_keyboard=True))
-        print(choice)
         return choice
 
 def ping(update, context):
