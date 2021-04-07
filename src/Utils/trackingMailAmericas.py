@@ -48,6 +48,7 @@ class TrackApi:
             closeModal.click()
             time.sleep(2)
             name_file = time.strftime("%Y%m%d-%H%M%S") + ".png"
+            logging.info("name_file:" + name_file)
             img_url=ob.full_Screenshot(driver, save_path=DOWNLOAD_PATH, image_name=name_file)
             driver.quit() 
         except ValueError as err:
