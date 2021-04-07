@@ -7,7 +7,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from Utils.trackingMailAmericas import TrackApi
 from Utils.sendToTelegram import sendPhoto
 
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)#logger = logging.getLogger(__name__)
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 thisfolder = os.path.dirname(os.path.abspath(__file__))
@@ -66,6 +66,7 @@ def reply(update, context):
 def getTrackingStatus(update, context):
     status = TrackApi()
     lastStatus = status.accessTraking()
+    logging.info("Sending: " + DOWNLOAD_PATH+lastStatus)
     context.bot.send_photo(chat_id=update.message.chat_id,photo=open(DOWNLOAD_PATH+lastStatus,'rb'))
 
 if __name__ == '__main__':
