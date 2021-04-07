@@ -58,19 +58,20 @@ def ping(update, context):
 
 def reply(update, context):
     user_input = update.message.text
+    chat_id=update.message.chat_id
     if isPermited(update, context):
         if user_input == "Tracking Status":
             update.message.reply_text("Requesting last Status, wait a moment... ")
-            getTrackingStatus(update, context)
+            getTrackingStatus(update, context,chat_id)
         elif user_input == "Ping":
             ping(update, context)
 
-def getTrackingStatus(update, context):
+def getTrackingStatus(update, context,chat_id):
     status = TrackApi()
     lastStatus = status.accessTraking()
     logging.info("Sending: " + DOWNLOAD_PATH+lastStatus)
     print(open(DOWNLOAD_PATH+lastStatus,'rb'))
-    context.bot.send_photo(chat_id=update.message.chat_id,photo=open(DOWNLOAD_PATH+lastStatus,'rb'))
+    context.bot.send_photo(chat_id=chat_id,photo=open(DOWNLOAD_PATH+lastStatus,'rb'))
 
 def error_handler(update: object, context: CallbackContext) -> None:
     """Log the error and send a telegram message to notify the developer."""
