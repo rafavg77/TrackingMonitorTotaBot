@@ -7,4 +7,4 @@ logger = logging.getLogger(__name__)
 
 status = TrackApi()
 lastStatus = status.accessTraking()
-send = sendPhoto(lastStatus)
+send = sendPhoto(lastStatus,'')

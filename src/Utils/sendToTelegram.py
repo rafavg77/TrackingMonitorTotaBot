@@ -19,11 +19,15 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 
-def sendPhoto(file):
+def sendPhoto(file,chat_id):
     try:
+        if chat_id == '':
+            BOT_CHAT_ID = BOT_CHAT
+        else:
+            BOT_CHAT_ID = chat_id
         logging.info("[+] Sending Telegram Photo ...")
         logging.info(DOWNLOAD_PATH + file)
-        PARAMS = {'chat_id' : BOT_CHAT, 'caption':'Este es el status al día de hoy'}
+        PARAMS = {'chat_id' : BOT_CHAT_ID, 'caption':'Este es el status al día de hoy'}
         files = { 'photo' : open(DOWNLOAD_PATH + file,'rb') } 
         r = requests.post(BOT_URL,PARAMS,files=files)
     except ValueError as err:

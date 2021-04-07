@@ -71,7 +71,9 @@ def getTrackingStatus(update, context,chat_id):
     lastStatus = status.accessTraking()
     logging.info("Sending: " + DOWNLOAD_PATH+lastStatus)
     print(open(DOWNLOAD_PATH+lastStatus,'rb'))
-    context.bot.send_photo(chat_id=chat_id,photo=open(DOWNLOAD_PATH+lastStatus,'rb'))
+    #context.bot.send_photo(chat_id=chat_id,photo=open(DOWNLOAD_PATH+lastStatus,'rb'))
+    send = sendPhoto(lastStatus,chat_id)
+
 
 def error_handler(update: object, context: CallbackContext) -> None:
     """Log the error and send a telegram message to notify the developer."""
