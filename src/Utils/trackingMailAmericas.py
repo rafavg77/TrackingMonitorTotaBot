@@ -34,7 +34,7 @@ class TrackApi:
         try:
             logging.info("Running Tracking Script ... ")
             options = Options()
-            options.headless = CONFIG_HEADLESS
+            options.headless = True
             options.add_argument("--window-size=1920,1200")
             profile = {"plugins.plugins_list": [{"enabled": False, "name": "Chrome PDF Viewer"}], # Disable Chrome's PDF Viewer
                 "download.default_directory": DOWNLOAD_PATH , "download.extensions_to_open": "applications/pdf"}
